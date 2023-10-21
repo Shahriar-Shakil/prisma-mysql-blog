@@ -13,6 +13,13 @@ export async function GET(req, res) {
       take: pageSize, // Number of records to retrieve per page
       skip: skip, // Number of records to skip
       // Add any other conditions or ordering as needed
+
+      include: {
+        tags: true,
+        postmeta: true,
+        author: true,
+        _count: true,
+      },
     });
     return NextResponse.json(
       { status: "success", data: { result, pageSize, pageNumber, total } },

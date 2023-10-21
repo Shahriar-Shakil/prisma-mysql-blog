@@ -4,7 +4,7 @@ const { NextResponse } = require("next/server");
 export async function GET(req, res) {
   try {
     let prisma = new PrismaClient();
-    let result = await prisma.postTag.findMany({ include: { tag: true } });
+    let result = await prisma.postMeta.findMany();
     return NextResponse.json({ status: "success", result }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ status: "Fail", result: error.toString() });
